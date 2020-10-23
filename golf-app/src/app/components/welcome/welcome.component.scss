@@ -1,0 +1,35 @@
+.welcome {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	background-image: url(../../images/man-golfing-course.jpg);
+	background-size: cover;
+
+	.welcome-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		height: 650px;
+		width: 65%;
+
+		.titles-cont {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			width: 80%;
+			background-color: #84c011;
+			padding: 25px 0 13px 0;
+			border-radius: 5px;
+		}
+		.welcome-content {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin: 50px 0 70px 0;
+		}
+	}
+}

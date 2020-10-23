@@ -1,1 +1,27 @@
-<p>course works!</p>
+<div class="course-cont">
+	<mat-card class="course" (click)="showOptions(course.id)">
+		<mat-card-title class="course-title">{{ course.name }}</mat-card-title>
+		<div class="course-img-cont">
+			<img class="course-img" [src]="course.image" [alt]="course.name">
+		</div>
+	</mat-card>
+	<div class="course-options" [@enterLeave] *ngIf="isOpen">
+		<mat-form-field class="options-form">
+			<mat-label>Tee Type</mat-label>
+			<mat-select [(ngModel)]="teeType">
+				<mat-option *ngFor="let teeType of teeTypes" [value]="teeType">{{ teeType }}</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<mat-form-field class="options-form">
+			<mat-label>Amount of Players</mat-label>
+			<mat-select [(ngModel)]="playersNum">
+				<mat-option [value]="1">1</mat-option>
+				<mat-option [value]="2">2</mat-option>
+				<mat-option [value]="3">3</mat-option>
+				<mat-option [value]="4">4</mat-option>
+			</mat-select>
+		</mat-form-field>
+		<button mat-raised-button class="build-btn" [routerLink]="['/scorecard', course.id]" (click)="buildScorecard()">Build Scorecard</button>
+	</div>
+</div>
+
