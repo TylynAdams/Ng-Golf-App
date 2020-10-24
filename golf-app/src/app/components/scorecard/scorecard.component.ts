@@ -17,6 +17,6 @@ export class ScorecardComponent implements OnInit {
     private buildOptionsService: BuildOptionsService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
+
 }

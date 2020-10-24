@@ -32,15 +32,9 @@ export class CourseComponent implements OnInit {
     private buildOptionsService: BuildOptionsService
   ) { }
 
-  ngOnInit(): void {
-    this.course.getCourses().subscribe(courses => {
-      this.course = courses;
-    });
-  }
-  getCourses(): Observable<Course[]> {
-    return this.http.get<Course[]>('http://golf-courses-api.herokuapp.com/#api');
-  }
+  ngOnInit(): void {}
 
+  // tslint:disable-next-line: typedef
   showOptions(id: number) {
     this.isOpen = !this.isOpen;
     this.coursesService.getCourseById(id).subscribe(course => {
@@ -50,15 +44,17 @@ export class CourseComponent implements OnInit {
     });
   }
 
+  // tslint:disable-next-line: typedef
   setTeeTypes(course) {
     course.data.holes[0].teeBoxes.map(teeBox => {
-      if(teeBox.teeTypeId === 5) { return; }
+      if (teeBox.teeTypeId === 5) { return; }
       this.teeTypes.push(teeBox.teeType.charAt(0).toUpperCase() + teeBox.teeType.slice(1));
     });
     console.log(this.teeTypes);
   }
 
 
+  // tslint:disable-next-line: typedef
   buildScorecard() {
     this.buildOptionsService.setOptions(this.teeType, this.playersNum);
     const teeType = this.buildOptionsService.getTeeType();

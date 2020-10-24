@@ -21,4 +21,8 @@ export class CoursesService {
   getCourseById(id: number): Observable<any> {
     return this.http.get<any>(`https://golf-courses-api.herokuapp.com/courses/${id}`);
   }
+
+  getHoles(): Observable<any> {
+    return this.http.get<any>('https://golf-courses-api.herokuapp.com/courses/holes');
+  }
 }

@@ -15,10 +15,12 @@ export class BuildOptionsService {
     this.playersNum = playersNum;
   }
 
+  // tslint:disable-next-line: typedef
   getTeeType() {
     return this.teeType;
   }
 
+  // tslint:disable-next-line: typedef
   getPlayersNum() {
     return this.playersNum;
   }
