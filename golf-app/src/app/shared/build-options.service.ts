@@ -9,6 +9,7 @@ export class BuildOptionsService {
 
   constructor() { }
 
+  // tslint:disable-next-line: typedef
   setOptions(teeType: string, playersNum: number) {
     this.teeType = teeType;
     this.playersNum = playersNum;

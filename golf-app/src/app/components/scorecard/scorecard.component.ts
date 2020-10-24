@@ -1,6 +1,6 @@
-import { BuildOptionsService } from './../../shared/build-options.service';
-import { Component, OnInit } from '@angular/core';
-import { CoursesService } from '../../shared/courses.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { CoursesService } from 'src/app/shared/courses.service';
+import { BuildOptionsService } from 'src/app/shared/build-options.service';
 
 @Component({
   selector: 'app-scorecard',
@@ -8,6 +8,9 @@ import { CoursesService } from '../../shared/courses.service';
   styleUrls: ['./scorecard.component.scss']
 })
 export class ScorecardComponent implements OnInit {
+  displayedColumns: string[] = ['player', 'Hole 1', 'Hole 2', 'Hole 3', 'Hole 4', 'Hole 5', 'Hole 6', 'Hole 7', 'Hole 8', 'Hole 9', 'Hole 10', 'Hole 11', 'Hole 12', 'Hole 13', 'Hole 14', 'Hole 14', 'Hole 15', 'Hole 16', 'Hole 17', 'Hole 18'];
+  dataSource = 'https://golf-courses-api.herokuapp.com/courses' ;
+
 
   constructor(
     private coursesService: CoursesService,
@@ -16,19 +19,4 @@ export class ScorecardComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  // setTeeTypes(course) {
-  //   course.data.holes[0].teeBoxes.map(teeBox => {
-  //     if(teeBox.teeTypeId === 5) return;
-  //     this.teeTypes.push(teeBox.teeType.charAt(0).toUpperCase() + teeBox.teeType.slice(1));
-  //   });
-  //   console.log(this.teeTypes);
-  // }
-
-  // buildScorecard() {
-  //   this.buildOptionsService.setOptions(this.teeType, this.playersNum);
-  //   const teeType = this.buildOptionsService.getTeeType();
-  //   console.log(teeType);
-  // }
-
 }

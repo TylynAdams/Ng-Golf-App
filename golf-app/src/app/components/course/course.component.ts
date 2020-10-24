@@ -1,9 +1,12 @@
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Component, OnInit, Input } from '@angular/core';
 import { Course } from 'src/app/models/course';
 import { CoursesService } from 'src/app/shared/courses.service';
 import { Animations } from '../../animations';
 import { Router } from '@angular/router';
 import { BuildOptionsService } from 'src/app/shared/build-options.service';
+
 
 @Component({
   selector: 'app-course',
@@ -24,11 +27,18 @@ export class CourseComponent implements OnInit {
   playersNum: number;
 
   constructor(
+    private http: HttpClient,
     private coursesService: CoursesService,
     private buildOptionsService: BuildOptionsService
   ) { }
 
   ngOnInit(): void {
+    this.course.getCourses().subscribe(courses => {
+      this.course = courses;
+    });
+  }
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>('http://golf-courses-api.herokuapp.com/#api');
   }
 
   showOptions(id: number) {
@@ -42,11 +52,12 @@ export class CourseComponent implements OnInit {
 
   setTeeTypes(course) {
     course.data.holes[0].teeBoxes.map(teeBox => {
-      if(teeBox.teeTypeId === 5) return;
+      if(teeBox.teeTypeId === 5) { return; }
       this.teeTypes.push(teeBox.teeType.charAt(0).toUpperCase() + teeBox.teeType.slice(1));
     });
     console.log(this.teeTypes);
   }
+
 
   buildScorecard() {
     this.buildOptionsService.setOptions(this.teeType, this.playersNum);

@@ -6,6 +6,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CoursesService {
+  static getRepoIssues(active: string, direction: string, pageIndex: number): any {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(
     private http: HttpClient
